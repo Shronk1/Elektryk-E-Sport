@@ -1,0 +1,293 @@
+:root{
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+    --text1: #000000;
+    --text2: #f0f0f0;
+    --text2-hover: #ffffff;
+    --text-shadow: #5f6a6c;
+    --gradient-1: #01FFBF;
+    --gradient-2: #0883D2;
+    --gradient-3: #013B94;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    scrollbar-color: var(--gradient-3) var(--gradient-2);
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar{
+    background: var(--gradient-2);
+    width: 7px;
+  }
+
+::-webkit-scrollbar-thumb{
+    background: var(--gradient-3);
+}
+
+body{
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-image: url(../images/Bricks.jpg);
+    overflow-x: hidden;
+    color: var(--text2);
+    cursor: url(../cursor/cursor1.png) , default !important;
+}
+
+a{
+    cursor: url(../cursor/cursor2.png) , default !important;
+}
+
+div.margin{
+    height: 3.75em;
+}
+
+.hide{
+    opacity:0;
+}
+
+.hide.show{
+    animation: appear 1.2s ease;
+    animation-fill-mode: forwards;
+    opacity: unset;
+    transition:0.5s;
+}
+
+@keyframes appear {
+    from{
+        translateY: 100px;
+    }
+    to{
+        translateY: 0px;
+    }
+}
+
+
+/* nagłówek */
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    user-select: none;
+}
+
+.nav{
+    width: calc(100vw - 3em);   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 2em;
+    color: var(--text2);
+    background: linear-gradient(145deg, var(--gradient-1) 0%, var(--gradient-2) 100%);
+}
+
+nav img{
+    height: 3.75em;
+    aspect-ratio: 1/1;
+}
+
+nav ul{
+    padding: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+nav li{
+    list-style: none;
+}
+
+.menu{
+    display: flex;
+    gap: 1em;
+    font-size: 1.5em;
+}
+
+nav a, nav label{
+    color: var(--text2);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+nav a:hover, nav label:hover{
+    color: var(--text2-hover);
+    text-shadow: 1px 1px 1rem var(--text-shadow);
+}
+
+.hamburger {
+    display: none;
+    font-size: 2em;
+}
+
+#checkbox_toggle:checked + .hamburger{
+    transform: rotate(90deg);
+}
+
+@media (max-width: 800px) {
+    .menu {
+        display:none;
+        text-align: right;
+    }
+
+    .menu li  {
+        margin-top: 1em;
+    }
+
+    #checkbox_toggle:checked ~ .menu {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+#bg{
+    width: 100vw;
+}
+
+/* kontent */
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    width: 80vw;
+    max-width: 900px;
+    background: linear-gradient(145deg, var(--gradient-2) 0%, var(--gradient-3) 100%);
+    border-radius: 3em;
+}
+
+.imgText{
+    margin: 1.3em;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.imgText img{
+    width: 180px;
+    height: 250px;
+    object-fit:cover;
+}
+
+
+
+.container img {
+    width: 250px;
+    height: 300px;
+    object-fit:cover;
+    
+    -webkit-box-reflect:below 2px linear-gradient(transparent, transparent, #0004);
+    
+    transform-origin:center;
+    transform:perspective(800px) rotateY(25deg);
+    transition:0.5s;
+}
+.container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
+    gap:1.5em;
+}
+
+.container:hover img {
+    opacity:0.3;
+}
+
+.container img:hover {
+    transform:perspective(800px) rotateY(0deg);
+    opacity:1;
+    box-shadow: 1px 1px 1rem var(--text-shadow);
+}
+
+/* jumper */
+
+#jumper{
+    position: fixed;
+    bottom: 7em;
+    right: -3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: linear-gradient(145deg, var(--gradient-2) 0%, var(--gradient-3) 100%);
+    transition: all .5s;
+    opacity: 0;
+}
+
+#jumper.show{
+    opacity: 1;
+    right: 3em;
+}
+
+/* stópka */
+
+footer{
+    position: block;
+    top: 100%;
+    margin-top: 2em;
+    width: 100%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    color: var(--text2);
+    background: linear-gradient(145deg, var(--gradient-1) 0%, var(--gradient-2) 100%);
+}
+
+footer a{
+    text-decoration: none;
+}
+
+.media>a{
+    padding: 1em;
+}
+.media>a:hover svg{
+    animation-name: ani;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes ani{
+    25%{
+        rotate: 20deg;
+    }
+    75%{
+        rotate: -20deg;
+    }
+    100%{
+        rotate: 0deg;
+    }
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col{
+    flex-direction: column;
+}
+
+.showSig{
+    animation: sig 4s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sig{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
